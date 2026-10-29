@@ -37,9 +37,8 @@ export default Plugin.define({
           return <box flexDirection="column" alignItems="center" flexGrow={1} flexBasis={0} minWidth={0} height={5} onSizeChange={function () { setWidth(this.width) }}>
             <text width="100%" height={1} wrapMode="none" truncate textAlign="center">{label}</text>
             {window ? <>
-              <box flexDirection="row" width="100%" height={1}>
+              <box flexDirection="row" width="100%" height={1} backgroundColor="#343b45">
                 <box width={Math.round(Math.floor(width()) * (100 - window.used) / 100)} height={1} backgroundColor={paceColor(window, now())} />
-                <box flexGrow={1} height={1} backgroundColor="#343b45" />
               </box>
               <text width="100%" height={1} wrapMode="none" truncate textAlign="center">{Math.round(100 - window.used)}% ({remaining(window.resetAt, now())}) left</text>
               <text width="100%" height={1} wrapMode="none" truncate textAlign="center" fg={paceColor(window, now())} attributes={TextAttributes.BOLD | (paceCritical(window, now()) ? TextAttributes.BLINK : 0)}>{`Current Pace: ${timeToSpent(window, now())}`.length <= width() ? `Current Pace: ${timeToSpent(window, now())}` : `Pace: ${timeToSpent(window, now())}`}</text>
